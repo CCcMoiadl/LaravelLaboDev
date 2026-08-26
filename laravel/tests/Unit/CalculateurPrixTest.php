@@ -67,4 +67,10 @@ class CalculateurPrixTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $calculateur->respecteSeuilMinimum(-10.00, 5.00);
     }
+
+    public function test_prix_respecte_seuil_minimum(): void{
+        $calculateur = new CalculateurPrix();
+        $this->assertTrue($calculateur->respecteSeuilMinimum(100.00, 0));
+        $this->assertFalse($calculateur->respecteSeuilMinimum(100.00, 1000));
+    }
 }
