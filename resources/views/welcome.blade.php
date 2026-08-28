@@ -6,6 +6,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+
         @fonts
 
         <!-- Styles / Scripts -->
