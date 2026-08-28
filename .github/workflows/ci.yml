@@ -5,9 +5,20 @@ jobs:
   bonjour:
   runs-on: ubuntu-latest
   steps:
-    - name: Dire bonjour
-      run: echo "Bonjour depuis GitHub Actions !"
-    - name: Afficher la date
-      run: date
-    - name: Afficher le répertoire de travail
-      run: pwd
+    - name: Checkout du code # clone le dépôt
+      uses: actions/checkout@v4
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ‘8.4'
+        extensions: pdo, pdo_mysql, mbstring, bcmath
+        coverage: xdebug
+    - name: Installer les dépendances
+      run: composer install --no-interaction --prefer-dist
+    - name: Préparer le .env de test
+      run: |
+        cp .env.example .env.testing
+        php artisan key:generate --env=testing
+    - name: Lancer les tests
+      run: php artisan test
+
