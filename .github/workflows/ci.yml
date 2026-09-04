@@ -93,7 +93,7 @@ jobs:
         ssh-keyscan ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
     - name: Déployer sur le VPS
       run: |
-        ssh -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}"
+        ssh -i ~/.ssh/deploy_key ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "
           cd /home/deploy/${{ secrets.EQUIPE_NOM }} &&
           git fetch origin &&
           git reset --hard origin/main &&
