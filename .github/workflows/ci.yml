@@ -13,6 +13,12 @@ jobs:
       - name: Checkout du code
         uses: actions/checkout@v4
 
+      - name: Composer Install
+        run: composer install
+
+      - name: Audit des dépendances
+        run: composer audit
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
