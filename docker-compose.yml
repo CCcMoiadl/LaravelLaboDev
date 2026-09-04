@@ -12,7 +12,7 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - "8080:80"               # port hÃ´te:port conteneur
+      - "8002:80"               # port hÃ´te:port conteneur
     volumes:
       - .:/var/www/html
       - ./docker/nginx.conf:/etc/nginx/conf.d/nginx.conf
