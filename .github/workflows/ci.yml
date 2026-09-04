@@ -10,11 +10,11 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Audit des dépendances
-        run: composer audit
-
       - name: Checkout du code
         uses: actions/checkout@v4
+
+      - name: Audit des dépendances
+        run: composer audit
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
